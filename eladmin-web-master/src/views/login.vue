@@ -33,11 +33,12 @@
       </el-form-item>
     </el-form>
     <!--  底部  -->
+    <!--
     <div v-if="$store.state.settings.showFooter" id="el-login-footer">
       <span v-html="$store.state.settings.footerTxt" />
       <span v-if="$store.state.settings.caseNumber"> ⋅ </span>
       <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">{{ $store.state.settings.caseNumber }}</a>
-    </div>
+    </div>  -->
   </div>
 </template>
 
