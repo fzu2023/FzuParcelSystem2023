@@ -73,20 +73,9 @@ public class FzuItemInfo implements Serializable {
     @ApiModelProperty(value = "订单状态")
     private String itemStatus;
 
-    @Column(name = "`delivery_id`",nullable = false)
-    @NotNull
+    @Column(name = "`delivery_id`")
     @ApiModelProperty(value = "派件员id")
     private Integer deliveryId;
-
-    @Column(name = "`sender_outlet_id`",nullable = false)
-    @NotNull
-    @ApiModelProperty(value = "寄件网点id")
-    private Integer senderOutletId;
-
-    @Column(name = "`recipient_outlet_id`",nullable = false)
-    @NotNull
-    @ApiModelProperty(value = "收件网点id")
-    private Integer recipientOutletId;
 
     @Column(name = "`item_id`",nullable = false)
     @NotNull
@@ -99,9 +88,16 @@ public class FzuItemInfo implements Serializable {
     private Timestamp itemStartTime;
 
     @Column(name = "`item_end_time`")
-    @UpdateTimestamp
     @ApiModelProperty(value = "订单完成时间")
     private Timestamp itemEndTime;
+
+    @Column(name = "`sender_outlet`")
+    @ApiModelProperty(value = "寄件网点")
+    private String senderOutlet;
+
+    @Column(name = "`recipient_outlet`")
+    @ApiModelProperty(value = "收件网点")
+    private String recipientOutlet;
 
     public void copy(FzuItemInfo source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

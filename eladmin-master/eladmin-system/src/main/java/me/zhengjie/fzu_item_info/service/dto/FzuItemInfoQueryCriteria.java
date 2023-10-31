@@ -37,13 +37,9 @@ public class FzuItemInfoQueryCriteria{
 
     /** 精确 */
     @Query
-    private Integer senderOutletId;
-
-    /** 精确 */
-    @Query
-    private Integer recipientOutletId;
-
-    /** 精确 */
-    @Query
     private Integer itemId;
+
+    /** 精确 */
+    @Query
+    private String senderOutlet;
 }
