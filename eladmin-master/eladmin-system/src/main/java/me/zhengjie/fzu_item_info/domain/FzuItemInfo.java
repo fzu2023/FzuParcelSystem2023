@@ -31,7 +31,7 @@ import java.io.Serializable;
 * @website https://eladmin.vip
 * @description /
 * @author ChenShan
-* @date 2023-10-09
+* @date 2023-10-31
 **/
 @Entity
 @Data

@@ -24,7 +24,7 @@ import org.mapstruct.ReportingPolicy;
 /**
 * @website https://eladmin.vip
 * @author ChenShan
-* @date 2023-10-09
+* @date 2023-10-31
 **/
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface FzuItemInfoMapper extends BaseMapper<FzuItemInfoDto, FzuItemInfo> {

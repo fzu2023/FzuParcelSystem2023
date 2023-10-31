@@ -66,6 +66,7 @@ public class FzuUserAddressController {
     @ApiOperation("新增用户地址")
     @PreAuthorize("@el.check('fzuUserAddress:add')")
     public ResponseEntity<Object> createFzuUserAddress(@Validated @RequestBody FzuUserAddress resources){
+
         fzuUserAddressService.create(resources);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -29,7 +29,7 @@ import me.zhengjie.utils.PageResult;
 * @website https://eladmin.vip
 * @description 服务接口
 * @author ChenShan
-* @date 2023-10-09
+* @date 2023-10-31
 **/
 public interface FzuItemInfoService {
 

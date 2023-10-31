@@ -40,7 +40,7 @@
             <el-input v-model="form.recipientPhone" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="订单状态">
-            <el-input v-model="form.itemStatus" style="width: 370px;" />
+            未设置字典，请手动设置 Select
           </el-form-item>
           <el-form-item label="派件员id" prop="deliveryId">
             <el-input v-model="form.deliveryId" style="width: 370px;" />
