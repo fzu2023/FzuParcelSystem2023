@@ -13,20 +13,20 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service.mapstruct;
+package me.zhengjie.fzu_user_address.service.mapstruct;
 
 import me.zhengjie.base.BaseMapper;
-import me.zhengjie.fzu_item_info.domain.FzuItemInfo;
-import me.zhengjie.fzu_item_info.service.dto.FzuItemInfoDto;
+import me.zhengjie.fzu_user_address.domain.FzuUserAddress;
+import me.zhengjie.fzu_user_address.service.dto.FzuUserAddressDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
 /**
 * @website https://eladmin.vip
-* @author ChenShan
+* @author chenshan
 * @date 2023-10-31
 **/
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface FzuItemInfoMapper extends BaseMapper<FzuItemInfoDto, FzuItemInfo> {
+public interface FzuUserAddressMapper extends BaseMapper<FzuUserAddressDto, FzuUserAddress> {
 
 }

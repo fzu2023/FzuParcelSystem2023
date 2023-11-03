@@ -8,12 +8,10 @@
         <el-input v-model="query.senderPhone" clearable placeholder="寄件人电话" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <label class="el-form-item-label">派件员id</label>
         <el-input v-model="query.deliveryId" clearable placeholder="派件员id" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
-        <label class="el-form-item-label">寄件网点id</label>
-        <el-input v-model="query.senderOutletId" clearable placeholder="寄件网点id" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
-        <label class="el-form-item-label">收件网点id</label>
-        <el-input v-model="query.recipientOutletId" clearable placeholder="收件网点id" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <label class="el-form-item-label">订单id</label>
         <el-input v-model="query.itemId" clearable placeholder="订单id" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
+        <label class="el-form-item-label">寄件网点</label>
+        <el-input v-model="query.senderOutlet" clearable placeholder="寄件网点" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <rrOperation :crud="crud" />
       </div>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
@@ -40,16 +38,16 @@
             <el-input v-model="form.recipientPhone" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="订单状态">
-            <el-input v-model="form.itemStatus" style="width: 370px;" />
+            <el-select v-model="form.itemStatus" filterable placeholder="请选择">
+              <el-option
+                v-for="item in dict.item_status"
+                :key="item.id"
+                :label="item.label"
+                :value="item.value" />
+            </el-select>
           </el-form-item>
-          <el-form-item label="派件员id" prop="deliveryId">
+          <el-form-item label="派件员id">
             <el-input v-model="form.deliveryId" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="寄件网点id" prop="senderOutletId">
-            <el-input v-model="form.senderOutletId" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="收件网点id" prop="recipientOutletId">
-            <el-input v-model="form.recipientOutletId" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="订单id" prop="itemId">
             <el-input v-model="form.itemId" style="width: 370px;" />
@@ -59,6 +57,24 @@
           </el-form-item>
           <el-form-item label="订单完成时间">
             <el-date-picker v-model="form.itemEndTime" type="datetime" style="width: 370px;" />
+          </el-form-item>
+          <el-form-item label="寄件网点">
+            <el-select v-model="form.senderOutlet" filterable placeholder="请选择">
+              <el-option
+                v-for="item in dict.outlet_status"
+                :key="item.id"
+                :label="item.label"
+                :value="item.value" />
+            </el-select>
+          </el-form-item>
+          <el-form-item label="收件网点">
+            <el-select v-model="form.recipientOutlet" filterable placeholder="请选择">
+              <el-option
+                v-for="item in dict.outlet_status"
+                :key="item.id"
+                :label="item.label"
+                :value="item.value" />
+            </el-select>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -75,10 +91,11 @@
         <el-table-column prop="recipientAddress" label="发往地址" />
         <el-table-column prop="senderPhone" label="寄件人电话" />
         <el-table-column prop="recipientPhone" label="收件人电话" />
-        <el-table-column prop="itemStatus" label="订单状态" />
-        <el-table-column prop="deliveryId" label="派件员id" />
-        <el-table-column prop="senderOutletId" label="寄件网点id" />
-        <el-table-column prop="recipientOutletId" label="收件网点id" />
+        <el-table-column prop="itemStatus" label="订单状态">
+          <template slot-scope="scope">
+            {{ dict.label.item_status[scope.row.itemStatus] }}
+          </template>
+        </el-table-column>
         <el-table-column prop="itemId" label="订单id" />
         <el-table-column prop="itemStartTime" label="订单生成时间" />
         <el-table-column prop="itemEndTime" label="订单完成时间" />
@@ -105,11 +122,12 @@ import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { id: null, sender: null, recipient: null, senderAddress: null, recipientAddress: null, senderPhone: null, recipientPhone: null, itemStatus: null, deliveryId: null, senderOutletId: null, recipientOutletId: null, itemId: null, itemStartTime: null, itemEndTime: null }
+const defaultForm = { id: null, sender: null, recipient: null, senderAddress: null, recipientAddress: null, senderPhone: null, recipientPhone: null, itemStatus: null, deliveryId: null, itemId: null, itemStartTime: null, itemEndTime: null, senderOutlet: null, recipientOutlet: null }
 export default {
   name: 'FzuItemInfo',
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
+  dicts: ['item_status', 'outlet_status'],
   cruds() {
     return CRUD({ title: '订单列表', url: 'api/fzuItemInfo', idField: 'id', sort: 'id,desc', crudMethod: { ...crudFzuItemInfo }})
   },
@@ -124,15 +142,6 @@ export default {
         senderPhone: [
           { required: true, message: '寄件人电话不能为空', trigger: 'blur' }
         ],
-        deliveryId: [
-          { required: true, message: '派件员id不能为空', trigger: 'blur' }
-        ],
-        senderOutletId: [
-          { required: true, message: '寄件网点id不能为空', trigger: 'blur' }
-        ],
-        recipientOutletId: [
-          { required: true, message: '收件网点id不能为空', trigger: 'blur' }
-        ],
         itemId: [
           { required: true, message: '订单id不能为空', trigger: 'blur' }
         ]
@@ -140,9 +149,8 @@ export default {
       queryTypeOptions: [
         { key: 'senderPhone', display_name: '寄件人电话' },
         { key: 'deliveryId', display_name: '派件员id' },
-        { key: 'senderOutletId', display_name: '寄件网点id' },
-        { key: 'recipientOutletId', display_name: '收件网点id' },
-        { key: 'itemId', display_name: '订单id' }
+        { key: 'itemId', display_name: '订单id' },
+        { key: 'senderOutlet', display_name: '寄件网点' }
       ]
     }
   },

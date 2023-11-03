@@ -1,5 +1,7 @@
 <template>
-  <a href="https://github.com/elunez/eladmin" target="_blank" class="github-corner" aria-label="View source on Github">
+  <!--<a href="https://github.com/elunez/eladmin" target="_blank" class="github-corner" aria-label="View source on Github">
+  -->
+  <a href="https://github.com/linhaorangtadie/FzuParcelSystem2023" target="_blank" class="github-corner" aria-label="View source on Github">
     <svg
       width="80"
       height="80"

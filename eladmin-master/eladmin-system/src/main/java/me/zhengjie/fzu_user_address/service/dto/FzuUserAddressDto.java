@@ -13,20 +13,32 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service.mapstruct;
+package me.zhengjie.fzu_user_address.service.dto;
 
-import me.zhengjie.base.BaseMapper;
-import me.zhengjie.fzu_item_info.domain.FzuItemInfo;
-import me.zhengjie.fzu_item_info.service.dto.FzuItemInfoDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import lombok.Data;
+import java.io.Serializable;
 
 /**
 * @website https://eladmin.vip
-* @author ChenShan
+* @description /
+* @author chenshan
 * @date 2023-10-31
 **/
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface FzuItemInfoMapper extends BaseMapper<FzuItemInfoDto, FzuItemInfo> {
+@Data
+public class FzuUserAddressDto implements Serializable {
 
+    /** id */
+    private Integer id;
+
+    /** 用户id */
+    private Integer userId;
+
+    /** 用户地址 */
+    private String userAddress;
+
+    /** 用户电话 */
+    private String userPhone;
+
+    /** 用户账户 */
+    private String username;
 }
