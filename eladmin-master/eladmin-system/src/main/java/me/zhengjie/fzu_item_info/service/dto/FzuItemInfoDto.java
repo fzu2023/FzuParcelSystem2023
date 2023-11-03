@@ -23,7 +23,7 @@ import java.io.Serializable;
 * @website https://eladmin.vip
 * @description /
 * @author ChenShan
-* @date 2023-10-31
+* @date 2023-11-03
 **/
 @Data
 public class FzuItemInfoDto implements Serializable {
@@ -52,9 +52,6 @@ public class FzuItemInfoDto implements Serializable {
     /** 订单状态 */
     private String itemStatus;
 
-    /** 派件员id */
-    private Integer deliveryId;
-
     /** 订单id */
     private Integer itemId;
 
@@ -69,4 +66,7 @@ public class FzuItemInfoDto implements Serializable {
 
     /** 收件网点 */
     private String recipientOutlet;
+
+    /** 派件员用户 */
+    private String deliveryUsername;
 }

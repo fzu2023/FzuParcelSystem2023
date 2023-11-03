@@ -42,7 +42,7 @@ import me.zhengjie.utils.PageResult;
 * @website https://eladmin.vip
 * @description 服务实现
 * @author ChenShan
-* @date 2023-10-31
+* @date 2023-11-03
 **/
 @Service
 @RequiredArgsConstructor
@@ -104,12 +104,12 @@ public class FzuItemInfoServiceImpl implements FzuItemInfoService {
             map.put("寄件人电话", fzuItemInfo.getSenderPhone());
             map.put("收件人电话", fzuItemInfo.getRecipientPhone());
             map.put("订单状态", fzuItemInfo.getItemStatus());
-            map.put("派件员id", fzuItemInfo.getDeliveryId());
             map.put("订单id", fzuItemInfo.getItemId());
             map.put("订单生成时间", fzuItemInfo.getItemStartTime());
             map.put("订单完成时间", fzuItemInfo.getItemEndTime());
             map.put("寄件网点", fzuItemInfo.getSenderOutlet());
             map.put("收件网点", fzuItemInfo.getRecipientOutlet());
+            map.put("派件员用户", fzuItemInfo.getDeliveryUsername());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

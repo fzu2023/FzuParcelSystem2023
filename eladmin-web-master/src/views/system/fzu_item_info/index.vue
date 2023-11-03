@@ -6,8 +6,8 @@
         <!-- 搜索 -->
         <label class="el-form-item-label">寄件人电话</label>
         <el-input v-model="query.senderPhone" clearable placeholder="寄件人电话" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
-        <label class="el-form-item-label">派件员id</label>
-        <el-input v-model="query.deliveryId" clearable placeholder="派件员id" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
+        <label class="el-form-item-label">订单状态</label>
+        <el-input v-model="query.itemStatus" clearable placeholder="订单状态" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <label class="el-form-item-label">订单id</label>
         <el-input v-model="query.itemId" clearable placeholder="订单id" style="width: 185px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
         <label class="el-form-item-label">寄件网点</label>
@@ -46,9 +46,6 @@
                 :value="item.value" />
             </el-select>
           </el-form-item>
-          <el-form-item label="派件员id">
-            <el-input v-model="form.deliveryId" style="width: 370px;" />
-          </el-form-item>
           <el-form-item label="订单id" prop="itemId">
             <el-input v-model="form.itemId" style="width: 370px;" />
           </el-form-item>
@@ -76,6 +73,9 @@
                 :value="item.value" />
             </el-select>
           </el-form-item>
+          <el-form-item label="派件员用户">
+            <el-input v-model="form.deliveryUsername" style="width: 370px;" />
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button type="text" @click="crud.cancelCU">取消</el-button>
@@ -99,6 +99,7 @@
         <el-table-column prop="itemId" label="订单id" />
         <el-table-column prop="itemStartTime" label="订单生成时间" />
         <el-table-column prop="itemEndTime" label="订单完成时间" />
+        <el-table-column prop="deliveryUsername" label="派件员用户" />
         <el-table-column v-if="checkPer(['admin','fzuItemInfo:edit','fzuItemInfo:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
@@ -122,7 +123,7 @@ import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { id: null, sender: null, recipient: null, senderAddress: null, recipientAddress: null, senderPhone: null, recipientPhone: null, itemStatus: null, deliveryId: null, itemId: null, itemStartTime: null, itemEndTime: null, senderOutlet: null, recipientOutlet: null }
+const defaultForm = { id: null, sender: null, recipient: null, senderAddress: null, recipientAddress: null, senderPhone: null, recipientPhone: null, itemStatus: null, itemId: null, itemStartTime: null, itemEndTime: null, senderOutlet: null, recipientOutlet: null, deliveryUsername: null }
 export default {
   name: 'FzuItemInfo',
   components: { pagination, crudOperation, rrOperation, udOperation },
@@ -148,7 +149,7 @@ export default {
       },
       queryTypeOptions: [
         { key: 'senderPhone', display_name: '寄件人电话' },
-        { key: 'deliveryId', display_name: '派件员id' },
+        { key: 'itemStatus', display_name: '订单状态' },
         { key: 'itemId', display_name: '订单id' },
         { key: 'senderOutlet', display_name: '寄件网点' }
       ]

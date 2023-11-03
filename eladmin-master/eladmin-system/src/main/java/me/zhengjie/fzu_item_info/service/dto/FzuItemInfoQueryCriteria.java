@@ -22,7 +22,7 @@ import me.zhengjie.annotation.Query;
 /**
 * @website https://eladmin.vip
 * @author ChenShan
-* @date 2023-10-31
+* @date 2023-11-03
 **/
 @Data
 public class FzuItemInfoQueryCriteria{
@@ -33,7 +33,7 @@ public class FzuItemInfoQueryCriteria{
 
     /** 精确 */
     @Query
-    private Integer deliveryId;
+    private String itemStatus;
 
     /** 精确 */
     @Query

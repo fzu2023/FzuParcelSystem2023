@@ -31,7 +31,7 @@ import java.io.Serializable;
 * @website https://eladmin.vip
 * @description /
 * @author ChenShan
-* @date 2023-10-31
+* @date 2023-11-03
 **/
 @Entity
 @Data
@@ -73,10 +73,6 @@ public class FzuItemInfo implements Serializable {
     @ApiModelProperty(value = "订单状态")
     private String itemStatus;
 
-    @Column(name = "`delivery_id`")
-    @ApiModelProperty(value = "派件员id")
-    private Integer deliveryId;
-
     @Column(name = "`item_id`",nullable = false)
     @NotNull
     @ApiModelProperty(value = "订单id")
@@ -98,6 +94,10 @@ public class FzuItemInfo implements Serializable {
     @Column(name = "`recipient_outlet`")
     @ApiModelProperty(value = "收件网点")
     private String recipientOutlet;
+
+    @Column(name = "`delivery_username`")
+    @ApiModelProperty(value = "派件员用户")
+    private String deliveryUsername;
 
     public void copy(FzuItemInfo source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
