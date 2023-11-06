@@ -13,33 +13,20 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service.dto;
+package me.zhengjie.fzu_notices_info.service.mapstruct;
 
-import lombok.Data;
-import java.util.List;
-import me.zhengjie.annotation.Query;
+import me.zhengjie.base.BaseMapper;
+import me.zhengjie.fzu_notices_info.domain.FzuNoticesInfo;
+import me.zhengjie.fzu_notices_info.service.dto.FzuNoticesInfoDto;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 /**
 * @website https://eladmin.vip
 * @author ChenShan
 * @date 2023-11-06
 **/
-@Data
-public class FzuItemInfoQueryCriteria{
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface FzuNoticesInfoMapper extends BaseMapper<FzuNoticesInfoDto, FzuNoticesInfo> {
 
-    /** 精确 */
-    @Query
-    private String senderPhone;
-
-    /** 精确 */
-    @Query
-    private String itemStatus;
-
-    /** 精确 */
-    @Query
-    private Integer itemId;
-
-    /** 精确 */
-    @Query
-    private String senderOutlet;
 }

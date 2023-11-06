@@ -13,11 +13,11 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service;
+package me.zhengjie.fzu_notices_info.service;
 
-import me.zhengjie.fzu_item_info.domain.FzuItemInfo;
-import me.zhengjie.fzu_item_info.service.dto.FzuItemInfoDto;
-import me.zhengjie.fzu_item_info.service.dto.FzuItemInfoQueryCriteria;
+import me.zhengjie.fzu_notices_info.domain.FzuNoticesInfo;
+import me.zhengjie.fzu_notices_info.service.dto.FzuNoticesInfoDto;
+import me.zhengjie.fzu_notices_info.service.dto.FzuNoticesInfoQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import java.util.Map;
 import java.util.List;
@@ -31,7 +31,7 @@ import me.zhengjie.utils.PageResult;
 * @author ChenShan
 * @date 2023-11-06
 **/
-public interface FzuItemInfoService {
+public interface FzuNoticesInfoService {
 
     /**
     * 查询数据分页
@@ -39,33 +39,33 @@ public interface FzuItemInfoService {
     * @param pageable 分页参数
     * @return Map<String,Object>
     */
-    PageResult<FzuItemInfoDto> queryAll(FzuItemInfoQueryCriteria criteria, Pageable pageable);
+    PageResult<FzuNoticesInfoDto> queryAll(FzuNoticesInfoQueryCriteria criteria, Pageable pageable);
 
     /**
     * 查询所有数据不分页
     * @param criteria 条件参数
-    * @return List<FzuItemInfoDto>
+    * @return List<FzuNoticesInfoDto>
     */
-    List<FzuItemInfoDto> queryAll(FzuItemInfoQueryCriteria criteria);
+    List<FzuNoticesInfoDto> queryAll(FzuNoticesInfoQueryCriteria criteria);
 
     /**
      * 根据ID查询
      * @param id ID
-     * @return FzuItemInfoDto
+     * @return FzuNoticesInfoDto
      */
-    FzuItemInfoDto findById(Integer id);
+    FzuNoticesInfoDto findById(Integer id);
 
     /**
     * 创建
     * @param resources /
     */
-    void create(FzuItemInfo resources);
+    void create(FzuNoticesInfo resources);
 
     /**
     * 编辑
     * @param resources /
     */
-    void update(FzuItemInfo resources);
+    void update(FzuNoticesInfo resources);
 
     /**
     * 多选删除
@@ -79,5 +79,5 @@ public interface FzuItemInfoService {
     * @param response /
     * @throws IOException /
     */
-    void download(List<FzuItemInfoDto> all, HttpServletResponse response) throws IOException;
+    void download(List<FzuNoticesInfoDto> all, HttpServletResponse response) throws IOException;
 }
