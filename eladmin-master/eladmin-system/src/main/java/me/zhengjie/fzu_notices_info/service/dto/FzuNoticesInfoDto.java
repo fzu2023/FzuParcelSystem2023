@@ -13,33 +13,33 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service.dto;
+package me.zhengjie.fzu_notices_info.service.dto;
 
 import lombok.Data;
-import java.util.List;
-import me.zhengjie.annotation.Query;
+import java.sql.Timestamp;
+import java.io.Serializable;
 
 /**
 * @website https://eladmin.vip
+* @description /
 * @author ChenShan
 * @date 2023-11-06
 **/
 @Data
-public class FzuItemInfoQueryCriteria{
+public class FzuNoticesInfoDto implements Serializable {
 
-    /** 精确 */
-    @Query
-    private String senderPhone;
+    /** id */
+    private Integer id;
 
-    /** 精确 */
-    @Query
-    private String itemStatus;
+    /** 发布人 */
+    private String author;
 
-    /** 精确 */
-    @Query
-    private Integer itemId;
+    /** 所属部门 */
+    private String dept;
 
-    /** 精确 */
-    @Query
-    private String senderOutlet;
+    /** 内容 */
+    private String content;
+
+    /** 更新时间 */
+    private Timestamp updateTime;
 }

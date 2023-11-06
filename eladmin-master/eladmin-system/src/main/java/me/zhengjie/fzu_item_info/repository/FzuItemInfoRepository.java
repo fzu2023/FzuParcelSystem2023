@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 /**
 * @website https://eladmin.vip
 * @author ChenShan
-* @date 2023-10-31
+* @date 2023-11-06
 **/
 public interface FzuItemInfoRepository extends JpaRepository<FzuItemInfo, Integer>, JpaSpecificationExecutor<FzuItemInfo> {
 }

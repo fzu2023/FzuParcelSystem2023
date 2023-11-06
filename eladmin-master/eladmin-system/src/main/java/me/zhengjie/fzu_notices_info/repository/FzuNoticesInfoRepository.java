@@ -13,33 +13,16 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service.dto;
+package me.zhengjie.fzu_notices_info.repository;
 
-import lombok.Data;
-import java.util.List;
-import me.zhengjie.annotation.Query;
+import me.zhengjie.fzu_notices_info.domain.FzuNoticesInfo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
 * @website https://eladmin.vip
 * @author ChenShan
 * @date 2023-11-06
 **/
-@Data
-public class FzuItemInfoQueryCriteria{
-
-    /** 精确 */
-    @Query
-    private String senderPhone;
-
-    /** 精确 */
-    @Query
-    private String itemStatus;
-
-    /** 精确 */
-    @Query
-    private Integer itemId;
-
-    /** 精确 */
-    @Query
-    private String senderOutlet;
+public interface FzuNoticesInfoRepository extends JpaRepository<FzuNoticesInfo, Integer>, JpaSpecificationExecutor<FzuNoticesInfo> {
 }

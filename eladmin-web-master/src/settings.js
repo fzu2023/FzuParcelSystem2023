@@ -2,11 +2,11 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: 'ELADMIN',
+  title: 'FZU-快递后台',
   /**
    * @description 是否显示 tagsView
    */
-  tagsView: true,
+  tagsView: false,
   /**
    * @description 固定头部
    */

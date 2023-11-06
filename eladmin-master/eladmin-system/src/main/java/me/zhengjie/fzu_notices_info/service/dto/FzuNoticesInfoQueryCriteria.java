@@ -13,7 +13,7 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.fzu_item_info.service.dto;
+package me.zhengjie.fzu_notices_info.service.dto;
 
 import lombok.Data;
 import java.util.List;
@@ -25,21 +25,9 @@ import me.zhengjie.annotation.Query;
 * @date 2023-11-06
 **/
 @Data
-public class FzuItemInfoQueryCriteria{
+public class FzuNoticesInfoQueryCriteria{
 
     /** 精确 */
     @Query
-    private String senderPhone;
-
-    /** 精确 */
-    @Query
-    private String itemStatus;
-
-    /** 精确 */
-    @Query
-    private Integer itemId;
-
-    /** 精确 */
-    @Query
-    private String senderOutlet;
+    private String dept;
 }
